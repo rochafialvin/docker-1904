@@ -58,6 +58,12 @@ $ docker attach app-1904
 $ docker stop c5b7367bee15 (by container id)
 $ docker stop quizzical_archimedes ( by container name)
 
+-----------------------
+-- Rename tag images --
+-----------------------
+$ docker tag <old tag> <new tag>
+$ docker tag docker-1904:16 rochafiteach/docker-1904:16
+
 
 -- attach --> memperlihatkan terminal
 -- detach --> tidak memperlihatkan terminal
