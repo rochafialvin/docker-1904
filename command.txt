@@ -61,3 +61,19 @@ $ docker stop quizzical_archimedes ( by container name)
 
 -- attach --> memperlihatkan terminal
 -- detach --> tidak memperlihatkan terminal
+
+----------------
+-- DOCKER HUB --
+----------------
+
+-- Login
+$ docker login
+
+-- Push image ke docker hub
+$ docker push rochafiteach/docker-1904:16
+
+-- Pull image dari docker hub
+$ docker pull rochafiteach/docker-1904:16
+
+-- Logout
+$ docker logout
