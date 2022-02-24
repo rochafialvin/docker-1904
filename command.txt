@@ -1,7 +1,21 @@
 -- Melihat list images
 $ docker images
 
--- Running container
+------------------
+-- Create image --
+------------------
+
+-- Pastikan dijalankan di folder project, dimana tempat file Dockerfile berada
+$ docker build .
+
+-- Menambahkan tag saat membuat images
+$ docker build -t <nama repo>:<tag> .
+$ docker build -t docker-1904:16
+
+--------------------------------------
+-- Running image (default : attach) --
+--------------------------------------
+
 $ docker run <name image>
 -- cowsay hello adalah perintah khusus untuk menjalankan docker/whalesay. Pada image lain kita tidak perlu menggunakan perintah ini
 $ docker run docker/whalesay cowsay hello
@@ -10,10 +24,40 @@ $ docker run docker/whalesay cowsay hello
 -- 2022 port container
 $ docker run -p 3000:2022 1137495c0225
 
--- Stop container by id or name
-$ docker stop c5b7367bee15
-$ docker stop quizzical_archimedes
+-- Generate container bernama app-1904 dari image docker-1904:16 dengan menghubungkan port 3000 local dengan port 2022 docker
+$ docker run -p 3000:2022 --name app-1904 docker-1904:16
 
--- Create image
--- Pastikan dijalankan di folder project, dimana tempat file Dockerfile berada
-$ docker build .
+-- Generate dan running container dengan mode detach ( -d )
+$ docker run --name app-1904 -p 3000:2022 -d docker-1904:16
+
+--------------------
+-- List container --
+--------------------
+$ docker ps (container yang sedang berjalan)
+$ docker ps -a (container yang berjalan dan yang tidak berjalan)
+
+---------------------------------------
+-- Start container (default: detach) --
+---------------------------------------
+$ docker start <container name>
+$ docker start thisty_ellis
+
+-- Menjalankan container app-1904 dengan mode attach
+$ docker start -a <container name>
+$ docker start -a app-1904
+
+---------------------------------------------------
+-- Attach terhadap container yang sudah berjalan --
+---------------------------------------------------
+$ docker attach <container name>
+$ docker attach app-1904
+
+--------------------
+-- Stop container --
+--------------------
+$ docker stop c5b7367bee15 (by container id)
+$ docker stop quizzical_archimedes ( by container name)
+
+
+-- attach --> memperlihatkan terminal
+-- detach --> tidak memperlihatkan terminal

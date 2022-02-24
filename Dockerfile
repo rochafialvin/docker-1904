@@ -1,6 +1,6 @@
 # Include image node. Karena untuk menjalankan api kita membutuhkan node js
 # Akan mencari image node pada laptop kita. Jika tidak ada akan mendownload dari docker hub
-FROM node
+FROM node:16
 
 # Menentukan direactory kerja (tempat dimana kita meng-copy seluruh file project)
 WORKDIR /app

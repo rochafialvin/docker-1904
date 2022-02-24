@@ -9,4 +9,9 @@ app.get("/", (req, res) => {
   res.send("<h1>Hello World");
 });
 
+app.get("/console", (req, res) => {
+  console.log("Route console telah diakses");
+  res.send("Lihat terminal");
+});
+
 app.listen(port, () => console.log(`Sever is running at ${port}`));
