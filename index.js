@@ -9,7 +9,8 @@ app.use(express.json());
 app.use("/public", express.static("public"));
 
 app.get("/", (req, res) => {
-  res.send("<h1>Hello World");
+  console.log("Hello from the other side");
+  res.send("<h1>Hello World !!! </h1>");
 });
 
 app.get("/console", (req, res) => {

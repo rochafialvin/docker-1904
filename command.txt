@@ -24,11 +24,20 @@ $ docker run docker/whalesay cowsay hello
 -- 2022 port container
 $ docker run -p 3000:2022 1137495c0225
 
+-- Delete container when it stops
+$ docker run --rm -p 3000:2022 1137495c0225
+
 -- Generate container bernama app-1904 dari image docker-1904:16 dengan menghubungkan port 3000 local dengan port 2022 docker
 $ docker run -p 3000:2022 --name app-1904 docker-1904:16
 
 -- Generate dan running container dengan mode detach ( -d )
 $ docker run --name app-1904 -p 3000:2022 -d docker-1904:16
+
+-- Run with volumes
+-- Create volume untuk menyimpan file txt --> -v files-1904-public:/app/public
+-- Create volume agar file pada container ikut berubah seiring perubahan pada project --> /home/rochafi/bootcamp/docker-1904:/app
+-- Create volume untuk node_modules agar node_modules tidak ter-replace --> -v /app/node_modules
+$ docker run --rm -p 2022:2022 --name files-1904 -v files-1904-public:/app/public -v /home/rochafi/bootcamp/docker-1904:/app -v /app/node_modules docker-files
 
 --------------------
 -- List container --
@@ -83,3 +92,14 @@ $ docker pull rochafiteach/docker-1904:16
 
 -- Logout
 $ docker logout
+
+------------
+-- Volume --
+------------
+
+-- Menampilkan list volume
+$ docker volume ls
+-- Menghapus satu atau banyak volume
+$ docker volume <volume name>
+-- Menghapus volume yang tidak terpakai (containernya sudah terhapus)
+$ docker volume prune
